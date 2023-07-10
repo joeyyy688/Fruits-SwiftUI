@@ -52,7 +52,7 @@ struct FruitCardView: View {
                     startPoint: .top, endPoint: .bottom)
                     
             )
-            .cornerRadius(40)
+            .cornerRadius(50)
             .onAppear{
                 withAnimation(.easeInOut(duration: 0.5), {
                     isAnimating = true

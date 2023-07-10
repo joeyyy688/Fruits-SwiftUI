@@ -11,7 +11,7 @@ struct ContentView: View {
     @State private var isAnimating: Bool = false
     
     var body: some View {
-        Text("Hello World")
+        FruitsListView()
     }//: BODY VIEW
 }
 

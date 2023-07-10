@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Fruit: Identifiable {
+struct Fruit: Identifiable, Hashable {
     let id = UUID()
     let title: String
     let headline: String
