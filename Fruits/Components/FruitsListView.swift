@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct FruitsListView: View {
+    
+    @State private var isSettingsShowing: Bool = false
+    
     var body: some View {
-        
         NavigationView {
             
             List(fruitsData.shuffled()){ item in
@@ -22,9 +24,16 @@ struct FruitsListView: View {
                 
             }
             .navigationTitle("Fruits")
-            .listRowSeparator(.hidden)
-            
-            
+            .toolbar(content: {
+                Button(action: {
+                    isSettingsShowing = true
+                }, label: {
+                    Image(systemName: "slider.horizontal.3")
+                })
+                .sheet(isPresented: $isSettingsShowing, content: {
+                    SettingsView()
+                })
+            })
         }
         
     }

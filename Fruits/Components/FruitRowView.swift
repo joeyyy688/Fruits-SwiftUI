@@ -15,15 +15,15 @@ struct FruitRowView: View {
         
         HStack{
             
-            ZStack{
+            ZStack {
                 Image(fruit.image)
                     .renderingMode(.original)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 90, height: 90, alignment: .center)
                     .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 3, x: 2, y: 2)
-                    .padding(.vertical, 14)
-                    .padding(.horizontal, 14)
+                    .padding(.vertical, 13)
+                    .padding(.horizontal, 13)
                     
             }
             .background(
@@ -33,9 +33,10 @@ struct FruitRowView: View {
             )
             .cornerRadius(20)
             
-            VStack(alignment: .leading, spacing: 5) {
+            
+            VStack(alignment: .leading) {
                 Text(fruit.title)
-                    .font(.system(.title, weight: .bold))
+                    .font(.system(.title, weight: .semibold))
                 
                 
                 Text(fruit.headline)
@@ -44,7 +45,6 @@ struct FruitRowView: View {
                     .multilineTextAlignment(.leading)
             }
             
-            Spacer()
         }
     }
 }

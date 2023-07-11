@@ -15,7 +15,8 @@ struct CustomSettingsLabelView: View {
     var body: some View {
         LabeledContent{
             Image(systemName: iconName)
-                .font(.system(.title3, weight: .heavy))
+                .font(.system(.body))
+                .foregroundColor(.accentColor)
                 
         } label: {
             Text(labelText.uppercased())

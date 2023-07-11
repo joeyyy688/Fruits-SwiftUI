@@ -18,7 +18,7 @@ struct FruitsDetailsView: View {
                     
                     FruitImageHeaderView(fruit: fruit)
                     
-                    VStack(alignment: .leading, spacing: 20){
+                    VStack(alignment: .leading, spacing: 20) {
                         Text(fruit.title)
                             .font(.system(.largeTitle, weight: .heavy))
                             .foregroundColor(fruit.gradientColors[1])
