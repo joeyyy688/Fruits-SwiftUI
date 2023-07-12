@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var restartOnboarding = false
+    @AppStorage("isOnboarding") var isOnboarding: Bool = false
     
     var body: some View {
         NavigationView {
@@ -44,15 +44,20 @@ struct SettingsView: View {
                         Divider().padding(.vertical, 5)
                         
                         Text("If you wish you can restart the application by toggle the switch in this box. That way it starts the onboarding process and you will see the welcome screen again.")
+                            .padding(.vertical, 7)
                             .font(.system(.footnote))
+                            .layoutPriority(1)
+                            .multilineTextAlignment(.leading)
                         
-                        GroupBox(
-                            content: {
-                                Toggle("RESTARTED", isOn: $restartOnboarding)
-                                    .foregroundColor(.green)
-                                    .fontWeight(.bold)
-                            }
-                        )
+                        Toggle(isOnboarding ? "RESTARTED" : "RESTART", isOn: $isOnboarding)
+                            .foregroundColor(isOnboarding ? .green : .secondary)
+                            .fontWeight(.bold)
+                            .animation(.easeInOut(duration: 0.2), value: isOnboarding)
+                            .padding()
+                            .background(
+                                Color(UIColor.tertiarySystemBackground)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            )
                     }//: GROUPBOX
                     .padding(.vertical, 20)
                     
@@ -60,12 +65,20 @@ struct SettingsView: View {
                         label: CustomSettingsLabelView(labelText: "application", iconName: "apps.iphone")
                     
                     ){
-                        Divider().padding(.vertical, 5)
                         
-                        ForEach(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
-                            SettingsRowView(leadingText: "Developer", trailingText: "John / Jane")
-                            Divider().padding(.vertical, 5)
-                        }
+                        SettingsRowView(leadingText: "Developer", trailingText: "John / Jane")
+                        
+                        SettingsRowView(leadingText: "Designer", trailingText: "Robert")
+                        
+                        SettingsRowView(leadingText: "Compatibility", trailingText: "iOS 15")
+                        
+                        SettingsRowView(leadingText: "Website", linkText: "Portfolio", linkUrl: "github.com/joeyyy688")
+                        
+                        SettingsRowView(leadingText: "Twitter", linkText: "@apple", linkUrl: "twitter.com/apple")
+                        
+                        SettingsRowView(leadingText: "SwiftUI", trailingText: "2.0")
+                        
+                        SettingsRowView(leadingText: "Version", trailingText: "1.0.0")
                     }
                     
                     

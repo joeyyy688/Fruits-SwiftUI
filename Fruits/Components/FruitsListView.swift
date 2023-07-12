@@ -14,7 +14,7 @@ struct FruitsListView: View {
     var body: some View {
         NavigationView {
             
-            List(fruitsData.shuffled()){ item in
+            List(fruitsData){ item in
                 
                 NavigationLink{
                     FruitsDetailsView(fruit: item)
@@ -23,6 +23,7 @@ struct FruitsListView: View {
                 }
                 
             }
+            .listStyle(PlainListStyle())
             .navigationTitle("Fruits")
             .toolbar(content: {
                 Button(action: {
@@ -35,7 +36,7 @@ struct FruitsListView: View {
                 })
             })
         }
-        
+        .navigationViewStyle(.stack)
     }
 }
 
